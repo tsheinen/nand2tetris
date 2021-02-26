@@ -1,0 +1,129 @@
+plugins {
+    id 'java'
+    id 'distribution'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+jar.enabled = false
+
+tasks.register("Hack", Jar) {
+    group = "build"
+    archiveFileName = "Hack.jar"
+    from(sourceSets.main.output) {
+        include "Hack/**"
+    }
+}
+
+tasks.register("HackGUI", Jar) {
+    group = "build"
+    archiveFileName = "HackGUI.jar"
+    from(sourceSets.main.output) {
+        include "HackGUI/**"
+    }
+}
+
+
+tasks.register("Compilers", Jar) {
+    group = "build"
+    archiveFileName = "Compilers.jar"
+    from(sourceSets.main.output) {
+        include "Hack/Assembler/**"
+        include "Hack/Compiler/**"
+        include "Hack/VirtualMachine/**"
+    }
+}
+
+tasks.register("Simulators", Jar) {
+    group = "build"
+    archiveFileName = "Simulators.jar"
+    from(sourceSets.main.output) {
+        include "Hack/CPUEmulator/**"
+        include "Hack/Gates/**"
+        include "Hack/HardwareSimulator/**"
+        include "Hack/VMEmulator/**"
+    }
+}
+
+tasks.register("SimulatorsGUI", Jar) {
+    group = "build"
+    archiveFileName = "SimulatorsGUI.jar"
+    from(sourceSets.main.output) {
+        include "SimulatorsGUI/**"
+    }
+}
+
+
+//tasks.register("CPUEmulator", Jar) {
+//    manifest {
+//        attributes(
+//                'Main-Class': 'CPUEmulatorMain'
+//        )
+//    }
+//    group = "build"
+//    archiveFileName = "CPUEmulator.jar"
+//    from(sourceSets.main.output) {
+//        include "**"
+//    }
+//}
+
+
+distributions {
+    main {
+        distributionBaseName = 'nand2tetris'
+        contents {
+            // 1. by default, content under /src/main/dist will be automatically included in the target dist zip
+
+            // 2. include compiled classes output dir into  /bin/classes
+            from(project.sourceSets.main.resources) {
+                into('.')
+            }
+
+            from("$buildDir/classes/java/main") {
+                include "*.class"
+                into("./bin/classes")
+            }
+
+            from("$buildDir/classes/java/main/builtInChips") {
+                include "*.class"
+                into("./builtInChips")
+            }
+
+            from("$buildDir/classes/java/main/builtInVMCode") {
+                include "*.class"
+                into("./builtInVMCode")
+            }
+
+            for(t in tasks.withType(Jar).matching { it.enabled == true } ) {
+                from(t) {
+                    into('./bin/lib/.')
+                }
+            }
+
+
+            // 3. include all dependent jars into /libs
+            from(configurations.compile) {
+                into('libs/')
+            }
+
+            // 4. other resources to include in the target zip
+            // ...
+
+        }
+    }
+}
+
+distZip {
+    dependsOn tasks.withType(Jar).matching { it.enabled == true }
+}
+
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
