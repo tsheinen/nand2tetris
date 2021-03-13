@@ -58,62 +58,62 @@ tasks.register("SimulatorsGUI", Jar) {
     }
 }
 
+tasks.register("runCPUEmulator", JavaExec) {
+    classpath sourceSets.main.output
+    workingDir "src/main/resources"
+    main "CPUEmulatorMain"
+}
 
-//tasks.register("CPUEmulator", Jar) {
-//    manifest {
-//        attributes(
-//                'Main-Class': 'CPUEmulatorMain'
-//        )
-//    }
-//    group = "build"
-//    archiveFileName = "CPUEmulator.jar"
-//    from(sourceSets.main.output) {
-//        include "**"
-//    }
-//}
+tasks.register("runHardwareSimulator", JavaExec) {
+    classpath sourceSets.main.output
+    workingDir "src/main/resources"
+    main "HardwareSimulatorMain"
+}
 
+tasks.register("runTextComparer", JavaExec) {
+    classpath sourceSets.main.output
+    workingDir "src/main/resources"
+    main "TextComparer"
+}
+
+tasks.register("runVMEmulator", JavaExec) {
+    classpath sourceSets.main.output
+    workingDir "src/main/resources"
+    main "VMEmulatorMain"
+}
 
 distributions {
     main {
         distributionBaseName = 'nand2tetris'
         contents {
-            // 1. by default, content under /src/main/dist will be automatically included in the target dist zip
 
-            // 2. include compiled classes output dir into  /bin/classes
+            // 1. copy resources into dist zip root -- currently this is just the install dir
             from(project.sourceSets.main.resources) {
                 into('.')
             }
 
+            // 2. copy classes from root of compile source -- this covers the classes with a main function
             from("$buildDir/classes/java/main") {
                 include "*.class"
                 into("./bin/classes")
             }
 
+            // 3. copy built in chips/vm codes into the appropriate folder
             from("$buildDir/classes/java/main/builtInChips") {
                 include "*.class"
                 into("./builtInChips")
             }
-
             from("$buildDir/classes/java/main/builtInVMCode") {
                 include "*.class"
                 into("./builtInVMCode")
             }
 
+            // 4. copy any built jars into lib folder
             for(t in tasks.withType(Jar).matching { it.enabled == true } ) {
                 from(t) {
                     into('./bin/lib/.')
                 }
             }
-
-
-            // 3. include all dependent jars into /libs
-            from(configurations.compile) {
-                into('libs/')
-            }
-
-            // 4. other resources to include in the target zip
-            // ...
-
         }
     }
 }
