@@ -89,7 +89,7 @@ distributions {
         contents {
 
             // 1. copy resources into dist zip root -- currently this is just the install dir
-            from(project.sourceSets.main.resources) {
+            from("$buildDir/resources/main") {
                 into('.')
             }
 
