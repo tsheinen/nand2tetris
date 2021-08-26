@@ -23,6 +23,7 @@ import Hack.Utilities.*;
 import java.io.*;
 import Hack.Gates.*;
 import Hack.Events.*;
+import SimulatorsGUI.HardwareSimulatorControllerComponent;
 
 /**
  * A simulator for the Hack Hardware. Simulates chips (in .hdl format).
@@ -60,7 +61,7 @@ public class HardwareSimulator extends HackSimulator
 
     // The gui of the simulator.
     private HardwareSimulatorGUI gui;
-
+    private HardwareSimulatorControllerGUI controllerGUI;
     // The simulated gate.
     private Gate gate;
 
@@ -96,8 +97,9 @@ public class HardwareSimulator extends HackSimulator
     /**
      * Constructs a new Hardware Simulator with the given gui.
      */
-    public HardwareSimulator(HardwareSimulatorGUI gui) {
+    public HardwareSimulator(HardwareSimulatorGUI gui, HardwareSimulatorControllerGUI controllerGUI) {
         this.gui = gui;
+        this.controllerGUI = controllerGUI;
         init();
 
         if (gui.getGatesPanel() != null)
@@ -800,6 +802,34 @@ public class HardwareSimulator extends HackSimulator
         }
 
         return result.toString();
+    }
+
+    /**
+     * Visualize the loaded program
+     */
+    public void visualizeProgram() {
+        String postfix = null;
+        String osname = System.getProperty("os.name");
+        if (osname.startsWith("Windows")) {
+            postfix = "win";
+        } else if (osname.startsWith("Linux")) {
+            postfix = "linux";
+        } else if (osname.startsWith("Mac")) {
+            postfix = "osx";
+        }
+
+        // should be sound? i didn't see any other invocations
+        File selected = ((HardwareSimulatorControllerComponent) controllerGUI).getSelectedFile();
+        if (selected == null) {
+            displayMessage("Can't visualize nonexistent file", true);
+        }
+        try {
+            Process proc = new ProcessBuilder()
+                    .command(String.format("%s/bin/visualizer/visualizer-%s", System.getProperty("user.dir"), postfix),
+                            selected.getAbsolutePath()).start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     class EvalTask implements Runnable {

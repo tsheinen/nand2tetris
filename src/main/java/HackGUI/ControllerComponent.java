@@ -18,12 +18,17 @@
 package HackGUI;
 
 import Hack.Controller.*;
-import java.io.*;
+
 import javax.swing.*;
-import javax.swing.event.*;
-import java.awt.event.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.util.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.util.Hashtable;
+import java.util.Vector;
 
 /**
  * This class represents the GUI of the controller component.
@@ -101,7 +106,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
     protected JMenuItem singleStepMenuItem, ffwdMenuItem, stopMenuItem, rewindMenuItem, exitMenuItem;
     protected JMenuItem usageMenuItem, aboutMenuItem;
     protected JMenu animationSubMenu, numericFormatSubMenu, additionalDisplaySubMenu;
-    protected JMenuItem breakpointsMenuItem, scriptMenuItem, programMenuItem;
+    protected JMenuItem breakpointsMenuItem, scriptMenuItem, visualizeMenuItem, programMenuItem;
     protected JRadioButtonMenuItem decMenuItem, hexaMenuItem, binMenuItem;
     protected JRadioButtonMenuItem scriptDisplayMenuItem, outputMenuItem, compareMenuItem, noAdditionalDisplayMenuItem;
     protected JRadioButtonMenuItem partAnimMenuItem, fullAnimMenuItem, noAnimMenuItem;
@@ -693,6 +698,14 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         numericFormatSubMenu.add(binMenuItem);
 
         viewMenu.addSeparator();
+
+        visualizeMenuItem = new JMenuItem("Visualize");
+        visualizeMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                notifyControllerListeners(ControllerEvent.VISUALIZE_PROGRAM, null);
+            }
+        });
+        viewMenu.add(visualizeMenuItem);
 
         singleStepMenuItem = new JMenuItem("Single Step", KeyEvent.VK_S);
         singleStepMenuItem.setAccelerator(KeyStroke.getKeyStroke("F11"));

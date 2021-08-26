@@ -65,8 +65,9 @@ tasks.register("runCPUEmulator", JavaExec) {
 }
 
 tasks.register("runHardwareSimulator", JavaExec) {
+    dependsOn unzipViz
     classpath sourceSets.main.output
-    workingDir "src/main/resources"
+    workingDir "$buildDir/resources/main"
     main "HardwareSimulatorMain"
 }
 
@@ -109,17 +110,38 @@ distributions {
             }
 
             // 4. copy any built jars into lib folder
-            for(t in tasks.withType(Jar).matching { it.enabled == true } ) {
+            for (t in tasks.withType(Jar).matching { it.enabled == true }) {
                 from(t) {
                     into('./bin/lib/.')
                 }
             }
+
         }
     }
 }
 
+task downloadViz {
+    doLast {
+        String url = "https://github.com/jainpranav1/HDL-Viz-Project/releases/download/v0.1.0-alpha/visualizer.zip";
+        def zipFile = new File("$buildDir/visualizer.zip")
+        zipFile.createNewFile();
+        new URL(url).withInputStream { i -> zipFile.withOutputStream { it << i } }
+    }
+}
+
+task unzipViz(type: Copy) {
+        def zipFile = new File("$buildDir/visualizer.zip")
+
+        def outputDir = file("${buildDir}/resources/main/bin/visualizer")
+
+        from zipTree(zipFile)
+        into outputDir
+}
+unzipViz.dependsOn 'downloadViz'
+
 distZip {
     dependsOn tasks.withType(Jar).matching { it.enabled == true }
+    dependsOn tasks.withType(Copy).matching { it.enabled == true }
 }
 
 

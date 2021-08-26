@@ -272,4 +272,15 @@ public class HardwareSimulatorControllerComponent extends ControllerComponent im
     public void tickTockMenuItem_actionPerformed(ActionEvent e) {
         notifyControllerListeners(HardwareSimulatorControllerEvent.TICKTOCK_CLICKED, null);
     }
+
+    /**
+     * Return the selected file
+     */
+    public File getSelectedFile() {
+        File f = chipFileChooser.getSelectedFile();
+        if (f == null) {
+            return null;
+        }
+        return f.getAbsoluteFile();
+    }
 }

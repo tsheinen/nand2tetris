@@ -33,7 +33,7 @@ public class HardwareSimulatorApplication extends HackApplication {
                                         HardwareSimulatorGUI simulatorComponent,
                                         String defaultScript, String contentsFileName,
                                         String aboutFileName) {
-        super(new HardwareSimulator(simulatorComponent), controllerComponent, simulatorComponent,
+        super(new HardwareSimulator(simulatorComponent, controllerComponent), controllerComponent, simulatorComponent,
               defaultScript, contentsFileName, aboutFileName);
     }
 

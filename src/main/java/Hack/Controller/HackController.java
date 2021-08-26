@@ -1018,6 +1018,9 @@ public class HackController
                 case ControllerEvent.LOAD_PROGRAM:
                     simulator.loadProgram();
                     break;
+                case ControllerEvent.VISUALIZE_PROGRAM:
+                    simulator.visualizeProgram();
+                    break;
                 case ControllerEvent.HALT_PROGRAM:
                     displayMessage("End of program", false);
                     programHalted = true;
