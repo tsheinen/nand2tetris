@@ -27,8 +27,8 @@ jobs:
         path: nand2tetris-1.0-SNAPSHOT
     - name: Zip :)
       run: |
-        chmod +x nand2tetris/*.sh
-        zip -r nand2tetris.zip nand2tetris/*
+        chmod +x nand2tetris-1.0-SNAPSHOT/*.sh
+        zip -r nand2tetris.zip nand2tetris-1.0-SNAPSHOT/*
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
