@@ -1,0 +1,25 @@
+name: Gradle Dist
+
+on:
+  release:
+    types: [push, repository_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Build with Gradle
+      run: gradle distZip
+    - uses: actions/upload-artifact@v2
+      with:
+        name: nand2tetris
+        path: build/distributions/nand2tetris-1.0-SNAPSHOT.zip
