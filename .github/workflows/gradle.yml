@@ -19,9 +19,8 @@ jobs:
       run: gradle distZip
     - name: unzip dist
       run: |
-        unzip build/distributions/nand2tetris-1.0-SNAPSHOT.zip
-        ls build/distributions
+        unzip build/distributions/nand2tetris-1.0-SNAPSHOT.zip 
     - uses: actions/upload-artifact@v2
       with:
         name: nand2tetris
-        path: build/distributions/nand2tetris-1.0-SNAPSHOT
+        path: nand2tetris-1.0-SNAPSHOT
