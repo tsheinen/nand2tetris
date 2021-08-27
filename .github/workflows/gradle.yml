@@ -19,7 +19,8 @@ jobs:
       run: gradle distZip
     - name: unzip dist
       run: |
-        unzip build/distributions/nand2tetris-1.0-SNAPSHOT.zip 
+        unzip build/distributions/nand2tetris-1.0-SNAPSHOT.zip
+        chmod +x nand2tetris-1.0-SNAPSHOT/bin/visualizer/visualizer*
     - uses: actions/upload-artifact@v2
       with:
         name: nand2tetris
