@@ -3,7 +3,7 @@ plugins {
     id 'distribution'
 }
 
-group 'org.example'
+group 'com.nand2tetris'
 version '1.0-SNAPSHOT'
 
 repositories {
