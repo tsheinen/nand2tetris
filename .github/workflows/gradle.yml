@@ -1,8 +1,6 @@
 name: Gradle Dist
 
-on:
-  release:
-    types: [push, repository_dispatch]
+on: [push, repository_dispatch]
 
 jobs:
   build:
