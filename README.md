@@ -9,7 +9,7 @@ Below is a demo showing how to use the application (Click the image to be direct
 # Instructions on downloading and using the tool (Windows, Linux)
 1. First check you have java installed (version 8 or higher). You can check this by typing `java -version` in your terminal. If you don't have java installed, download it from this link https://www.java.com/en/ (version 8 or higher).
 
-2. Next, download and unzip the nan2tetris.zip file of the latest release from this link: https://github.com/tcheinen/nand2tetris/releases.
+2. Next, download and unzip the nand2tetris.zip file of the latest release from this link: https://github.com/tcheinen/nand2tetris/releases.
 
 3. After opening the hardware simulator in this download:
     - Select a chip
