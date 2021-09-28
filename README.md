@@ -15,3 +15,9 @@ Below is a demo showing how to use the application (Click the image to be direct
     - Select a chip
     - In the view tab, select visualize.
 4. The HDL Visualizer will then produce an SVG image visualizing your selected chip with your computer's SVG viewer. If you don't like your default svg viewer, you can change it.
+
+# Instructions for changing default SVG viewer (Windows)
+1. Go to default apps
+2. Select "choose default apps by file type"
+3. Change your default svg viewer. Preferably, set it to a web browser.
+
