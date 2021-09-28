@@ -18,6 +18,8 @@ Below is a demo showing how to use the application (Click the image to be direct
 
 # Instructions for changing default SVG viewer (Windows)
 1. Go to default apps
-2. Select "choose default apps by file type"
-3. Change your default svg viewer. Preferably, set it to a web browser.
+2. 
+3. Select "choose default apps by file type"
+4. 
+5. Change your default svg viewer. Preferably, set it to a web browser.
 
