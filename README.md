@@ -21,3 +21,5 @@ Below is a demo showing how to use the application (Click the image to be direct
 2. Select "choose default apps by file type"
 3. Change your default svg viewer. Preferably, set it to a web browser.
 
+# Feedback for HDL Visualizer Tool
+Please provide any feedback you have to this form: https://docs.google.com/forms/d/e/1FAIpQLSfeZo93xgqrqVWMg4jOeXhiEluMdE71eSWCXnZba5QOu-Psmg/viewform?usp=sf_link
