@@ -12,6 +12,6 @@ Below is a demo showing how to use the application (Click the image to be direct
 2. Next, download and unzip the nan2tetris.zip file of the latest release from this link: https://github.com/tcheinen/nand2tetris/releases.
 
 3. After opening the hardware simulator in this download:
-  - Select a chip
-  - In the view tab, select visualize.
+    - Select a chip
+    - In the view tab, select visualize.
 4. The HDL Visualizer will then produce an SVG image visualizing your selected chip with your computer's SVG viewer. If you don't like your default svg viewer, you can change it.
