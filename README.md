@@ -22,4 +22,4 @@ Below is a demo showing how to use the application (Click the image to be direct
 3. Change your default svg viewer. Preferably, set it to a web browser.
 
 # Feedback for HDL Visualizer Tool
-Please provide any feedback you have to this form: https://docs.google.com/forms/d/e/1FAIpQLSfeZo93xgqrqVWMg4jOeXhiEluMdE71eSWCXnZba5QOu-Psmg/viewform?usp=sf_link
+Please provide any feedback you have to this form: https://urldefense.com/v3/__https:/forms.gle/u13upLoQcchhFmnM9__;!!KwNVnqRv!UkhGzG1QEC5aVx26H6TMuv-tWRbuq3bm2Tcx4TpgR6tXIfyF5IuiTIXqlrnAghuh$
