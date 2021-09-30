@@ -21,5 +21,9 @@ Below is a demo showing how to use the application (Click the image to be direct
 2. Select "choose default apps by file type"
 3. Change your default svg viewer. Preferably, set it to a web browser.
 
+# Notes about MacOS
+1. Currently, there is an issue related to code signing with downloading the program for MacOS.
+2. If providing feedback, you can do so by watching the provided video.
+
 # Feedback for HDL Visualizer Tool
 Please provide any feedback you have to this form: https://urldefense.com/v3/__https:/forms.gle/u13upLoQcchhFmnM9__;!!KwNVnqRv!UkhGzG1QEC5aVx26H6TMuv-tWRbuq3bm2Tcx4TpgR6tXIfyF5IuiTIXqlrnAghuh$
