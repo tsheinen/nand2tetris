@@ -1,5 +1,7 @@
 # nand2tetris with HDL Visualizer
 
+#### Update: For visualizing your HDL files, please make use of the [Nand2Tetris HDL Visualizer](https://marketplace.visualstudio.com/items?itemName=PranavJain.nand2tetris-hdl-visualizer). This extension is a followup to the project in this repository. The project in this repository is no longer being maintained, but the extension is.
+
 The HDL Visualizer is a tool that allows students to visualize hdl files developed for nand2tetris.
 
 Below is a demo showing how to use the application (Click the image to be directed to the tutorial).
